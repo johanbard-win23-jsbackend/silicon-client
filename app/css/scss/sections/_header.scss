@@ -1,0 +1,114 @@
+.header {
+    padding: 1rem;
+    background-color: var(--white);
+
+    .header-avatar img {
+        max-height: 2.75rem;
+        max-width: 2.75rem;
+        border-radius: 50%;
+    }
+
+    .container {
+        display: grid;
+        align-items: center;
+        grid-template-columns: 1fr auto;
+        grid-template-areas:
+            "logo mobile" "menu menu";
+        gap: 0px;
+
+        @include lg {
+            grid-template-columns: auto 1fr;
+            grid-template-areas: "logo menu";
+            gap: 40px;
+        }
+
+        #logo {
+            grid-area: logo;
+
+            img {
+                content: var(--logo-img);
+            }
+        }
+
+        #menu {
+            width: 100%;
+            padding: 0;
+            transition: all .5s ease-in-out;
+            display: none; // <-- SHOW MOBILE MENU
+            overflow: hidden;
+            grid-area: menu;
+            justify-self: center;
+            justify-items: center;
+            gap: 40px;
+            grid-template-columns: 1fr;
+            grid-template-areas:
+                "buttons" "navigation" "switch";
+
+            @include lg {
+                display: grid;
+                height: auto;
+                justify-self: auto;
+                justify-items: flex-start;
+                grid-template-columns: 1fr auto auto;
+                grid-template-areas: "navigation switch buttons";
+            }
+
+            &.active {
+                display: grid;
+                overflow: auto;
+                padding: 1.25rem 0;
+            }
+
+            .nav {
+                grid-area: navigation;
+                display: flex;
+                gap: 15px;
+                /*  a.nav-link {
+                    @include text-nav;
+                    @include transition;
+                    display: flex;
+                    align-items: center;
+                    cursor: pointer;
+                    &:hover{
+                        text-decoration: none;
+                        color: $theme;
+                    }
+                }*/
+            }
+
+            .btn-switch {
+                grid-area: switch;
+
+                @include lg {
+                    display: flex;
+                }
+            }
+
+            .header-profile img {
+                height: 3rem;
+                border-radius: 50%;
+            }
+
+            .account-buttons {
+                grid-area: buttons;
+                display: flex;
+                justify-content: center;
+                gap: 15px;
+
+                @include lg {
+                    display: flex;
+                }
+            }
+        }
+
+        .btn-mobile {
+            grid-area: mobile;
+            display: block;
+            @include h2;
+
+            @include lg {
+                display: none;
+            }
+        }
+    }
+}

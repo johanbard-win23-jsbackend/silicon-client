@@ -1,0 +1,114 @@
+form {
+    .box {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+
+        @include lg {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    .input-box {
+        label {
+            color: var(--gray-900);
+            font-weight: bold;
+        }
+
+        span {
+            @include text-xs;
+            float: right;
+            color: $danger;
+        }
+
+        input {
+            width: 100%;
+            width: -webkit-fill-available;
+
+            &.input-validation-error {
+                border-color: $danger;
+            }
+        }
+    }
+
+    .checkbox-box {
+        cursor: pointer;
+
+        span {
+            @include text-xs;
+            float: right;
+            color: $danger;
+        }
+    }
+
+
+    input {
+        all: revert;
+
+        @include standard-text;
+
+        &[type=text], &[type=email], &[type=tel], &[type=password] {
+            border: 1px solid var(--gray-500);
+            border-radius: 8px;
+            background-color: var(--white);
+            color: var(--gray-700);
+            padding: .5rem;
+
+            &::placeholder {
+                opacity: .4;
+            }
+
+            &:active::placeholder, &:focus-visible::placeholder, &:focus-within::placeholder, &:focus::placeholder {
+                color: var(--white);
+            }
+        }
+    }
+
+    textarea {
+        all: revert;
+
+        @include standard-text;
+        width: 100%;
+        width: -webkit-fill-available;
+        border: 1px solid var(--gray-500);
+        border-radius: 8px;
+        background-color: var(--white);
+        color: var(--gray-700);
+        padding: .5rem;
+
+        &::placeholder {
+            opacity: .4;
+        }
+
+        &:active::placeholder, &:focus-visible::placeholder, &:focus-within::placeholder, &:focus::placeholder {
+            color: var(--white);
+        }
+    }
+
+    .validation-summary-errors {
+        color: $gray-900;
+        background-color: pink;
+        border: 1px solid $danger;
+        padding: 1rem;
+        border-radius: 8px;
+
+        & ul li {
+            text-align: center;
+        }
+    }
+}
+
+@mixin select {
+    @include text-xs;
+    border: 1px solid var(--gray-500);
+    border-radius: 8px;
+    color: var(--gray-700);
+    padding: .5rem .75rem;
+}
+
+@mixin input {
+    border: 1px solid var(--gray-500);
+    border-radius: 8px;
+    color: var(--gray-500);
+    padding: .5rem;
+}

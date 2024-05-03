@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
+import "./css/reset.css";
 import "./css/globals.css";
+import Header from "./components/header/Header";
+import Footer from "./components/footer/Footer";
 
 export const metadata: Metadata = {
   title: "Silicon",
@@ -12,17 +15,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html className="html" lang="en">
       <head>
-        {/* RESET STYLESHEET */}
-        <link rel="stylesheet" href="~/css/reset.css" asp-append-version="true" />
-
         {/* FONTAWESOME */}
         <script defer src="https://kit.fontawesome.com/41c8b474e2.js" crossOrigin="anonymous"></script>
       </head>
-      <header className="header"></header>
-      <body className="">{children}</body>
-      <footer className="footer"></footer>
+      <body className="body-wrapper">
+        <Header />
+        {children}
+        <Footer />
+      </body>
+      
     </html>
   );
 }

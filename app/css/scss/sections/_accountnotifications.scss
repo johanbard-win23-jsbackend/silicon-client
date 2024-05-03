@@ -1,0 +1,54 @@
+section.account-notifications {
+    .container {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            'side' 'main';
+
+        @include xl {
+            gap: 5rem;
+            grid-template-columns: auto 1fr;
+            grid-template-areas: 'side main';
+        }
+
+        .notifications {
+            grid-area: main;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            height: 100%;
+
+            #notifications-form {
+                padding-bottom: 2rem;
+                height: 100%;
+            }
+
+            form fieldset {
+                height: 100%;
+            }
+
+            .main-box {
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;
+                height: 100%;
+            }
+
+            .switch-box {
+                display: flex;
+                align-items: start;
+                gap: 1rem;
+
+                .text-s {
+                    color: var(--gray-600)
+                }
+            }
+
+            .buttons-box {
+                display: flex;
+                gap: 1rem;
+            }          
+        }
+    }
+}

@@ -1,0 +1,55 @@
+section.account-details {
+    .container {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            'side' 'details';
+
+        @include xl {
+            gap: 5rem;
+            grid-template-columns: auto 1fr;
+            grid-template-areas: 'side details';
+        }
+
+        .details {
+            grid-area: details;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+
+            #basic-info {
+                padding-bottom: 2rem;
+                border-bottom: 1px solid var(--gray-500);
+                label .optional {
+                    @include text-xs;
+                    color: var(--gray-500);
+                    float: none;
+                }
+            }
+
+            #details-bio {
+                label .optional {
+                    @include text-xs;
+                    color: var(--gray-500);
+                    float: none;
+                }
+            }
+
+            form fieldset {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+
+                legend .h5 {
+                    color: $theme;
+                }
+            }
+
+            .buttons-box {
+                display: flex;
+                gap: 1rem;
+            }
+        }
+    }
+}
