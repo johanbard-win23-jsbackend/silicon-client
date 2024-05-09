@@ -31,11 +31,11 @@ export default function Header() {
             </div>
 
             <div className="account-buttons">
-              <Link href="/account/details" className="btn-gray">
+              <Link href="/auth/signin" className="btn-gray">
                   <i className="fa-solid fa-arrow-right-to-bracket"></i>
                   <span>Sign in</span>
               </Link>
-              <Link href="/account/details" className="btn-theme">
+              <Link href="/auth/signup" className="btn-theme">
                   <i className="fa-regular fa-user"></i>
                   <span>Sign up</span>
               </Link>

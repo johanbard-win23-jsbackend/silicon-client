@@ -1,8 +1,7 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
+  "/auth/signup/page": "app/auth/signup/page.js",
+  "/auth/signin/page": "app/auth/signin/page.js",
+  "/portfolio/courses/page": "app/portfolio/courses/page.js",
   "/account/details/page": "app/account/details/page.js",
-  "/account/security/page": "app/account/security/page.js",
-  "/account/notifications/page": "app/account/notifications/page.js",
-  "/account/messages/page": "app/account/messages/page.js",
-  "/page": "app/page.js"
+  "/portfolio/course/page": "app/portfolio/course/page.js"
 }

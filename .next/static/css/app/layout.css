@@ -1011,6 +1011,219 @@ section.account-notifications .container .notifications .switch-box .text-s {
 section.account-notifications .container .notifications .buttons-box {
   display: flex;
   gap: 1rem;
+}
+
+section.create-account-form .container {
+  width: 100%;
+}
+@media (min-width: 992px) {
+  section.create-account-form .container {
+    width: 33dvw;
+  }
+}
+section.create-account-form .container #create-account-form fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+section.create-account-form .container #create-account-form fieldset button {
+  width: 100%;
+}
+section.create-account-form .container #create-account-form fieldset .name-box {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  justify-content: space-between;
+}
+section.create-account-form .container #create-account-form fieldset .name-box label {
+  width: 100%;
+}
+@media (min-width: 992px) {
+  section.create-account-form .container #create-account-form fieldset .name-box {
+    flex-direction: row;
+  }
+}
+section.create-account-form .container #create-account-form fieldset .terms-box {
+  display: flex;
+  gap: 0.5rem;
+}
+section.create-account-form .container #create-account-form fieldset .terms-box label {
+  display: inline;
+}
+section.create-account-form .container a {
+  margin-top: 1rem;
+  align-self: center;
+}
+
+section.user-login .container {
+  width: 100%;
+}
+@media (min-width: 992px) {
+  section.user-login .container {
+    width: 33dvw;
+  }
+}
+section.user-login .container #login-form fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+section.user-login .container #login-form fieldset label {
+  width: 100%;
+}
+section.user-login .container #login-form fieldset label input [type=email], section.user-login .container #login-form fieldset label input[type=password] {
+  padding-left: 0.5rem;
+}
+section.user-login .container #login-form fieldset button {
+  width: 100%;
+}
+section.user-login .container #login-form fieldset .remember-box {
+  display: flex;
+  gap: 0.5rem;
+}
+section.user-login .container a {
+  margin-top: 1rem;
+  align-self: center;
+}
+
+section.courses .container {
+  gap: 3rem;
+}
+section.courses .heading-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+section.courses .heading-box .input-box {
+  display: flex;
+  gap: 1rem;
+}
+section.courses .heading-box .input-box #category-filter select {
+  line-height: 160%;
+  font-weight: 400;
+  color: var(--gray-700);
+  font-family: "Manrope", sans-serif;
+  font-size: 12px !important;
+  border: 1px solid var(--gray-500);
+  border-radius: 8px;
+  color: var(--gray-700);
+  padding: 0.5rem 0.75rem;
+}
+section.courses .heading-box .input-box #search {
+  position: relative;
+}
+section.courses .heading-box .input-box #search i {
+  position: absolute;
+  right: 0.5rem;
+  top: 30%;
+  color: var(--gray-800);
+}
+section.courses .grid-box {
+  display: grid;
+  grid-gap: 2rem;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 768px) {
+  section.courses .grid-box {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (min-width: 992px) {
+  section.courses .grid-box {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+section.courses .grid-box .grid-item {
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 2px 6.4px -1px rgba(19, 16, 34, 0.03), 0px 4.4px 12px -1px rgba(19, 16, 34, 0.06);
+  position: relative;
+  border-radius: 8px;
+}
+section.courses .grid-box .grid-item:hover {
+  box-shadow: 0px 4px 13px -2px rgba(19, 16, 34, 0.06), 0px 4.8px 24.4px -6px rgba(19, 16, 34, 0.1);
+  /*scale: 1.01;*/
+}
+section.courses .grid-box .grid-item:hover .content .text-box p.h5 {
+  text-decoration: underline;
+}
+section.courses .grid-box .grid-item .content {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 0.5rem;
+}
+section.courses .grid-box .grid-item .content img {
+  border-radius: 8px 8px 0 0;
+  max-height: 300px;
+  width: 100%;
+  object-fit: cover;
+}
+section.courses .grid-box .grid-item .content .text-box {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0 1rem 1rem 1rem;
+}
+section.courses .grid-box .grid-item .content .text-box p.h5 {
+  flex: 1 1 auto;
+}
+section.courses .grid-box .grid-item .content .text-box .price {
+  flex: 0 1 auto;
+  font-weight: bold;
+}
+section.courses .grid-box .grid-item .content .text-box .price.sale-new {
+  color: #EF4444;
+}
+section.courses .grid-box .grid-item .content .text-box .price.sale-old {
+  color: var(--gray-500);
+  font-weight: 500;
+  text-decoration: line-through;
+}
+section.courses .grid-box .grid-item .content .text-box .info-box {
+  flex: 0 1 auto;
+  display: flex;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--gray-300);
+}
+section.courses .grid-box .grid-item .content .text-box .info-box .hours, section.courses .grid-box .grid-item .content .text-box .info-box .rating {
+  color: var(--gray-600);
+}
+section.courses .grid-box .grid-item .tag {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  color: var(--white);
+  background-color: #22C55E;
+  padding: 0.25rem 0.5rem;
+  border-radius: 8px;
+}
+section.courses .grid-box .grid-item .bookmark {
+  transition: all 0.3s ease-in-out;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: var(--white);
+  height: 2.25rem;
+  width: 2.25rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+section.courses .grid-box .grid-item .bookmark i {
+  display: block;
+  color: var(--gray-800);
+  font-size: 18px;
+}
+section.courses .grid-box .grid-item .bookmark:hover {
+  background-color: #6366F1;
+}
+section.courses .grid-box .grid-item .bookmark:hover i {
+  color: var(--white);
 }/*# sourceMappingURL=globals.css.map */
 /*!***************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./app/css/reset.css ***!
