@@ -5,6 +5,11 @@ import { cookies } from "next/headers";
 export default function Header() {
     const isSignedIn = cookies().get('Authorization')
 
+
+    // const menuButtonClicked = (e: React.MouseEvent<HTMLElement>) => {
+
+    // }
+
   return (
     <header className="w-full d-flex center header">
     <div className="container w-max">
@@ -59,6 +64,11 @@ export default function Header() {
         {/* <div className="btn-mobile" onclick="MenuButton_Clicked()">
             <i className="fa-solid fa-bars"></i>
         </div> */}
+
+        <div className="btn-mobile">
+            <i className="fa-solid fa-bars"></i>
+        </div>
+
     </div>
 </header>
   );
