@@ -1,4 +1,4 @@
-// File: C:\Users\bardj\Documents\GitHub\ecu-jsbackend-silicone\silicon-client\app\page.tsx
+// File: C:\Users\jnbd05\Documents\Barden-GitHub\jsbackend\silicon-client\app\page.tsx
 import * as entry from '../../../app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

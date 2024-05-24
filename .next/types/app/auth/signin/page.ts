@@ -1,4 +1,4 @@
-// File: C:\Users\bardj\Documents\GitHub\ecu-jsbackend-silicone\silicon-client\app\auth\signin\page.tsx
+// File: C:\Users\jnbd05\Documents\Barden-GitHub\jsbackend\silicon-client\app\auth\signin\page.tsx
 import * as entry from '../../../../../app/auth/signin/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

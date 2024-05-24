@@ -1,7 +1,10 @@
 import Link from "next/link";
 import styles from "./page.module.css";
+import { cookies } from "next/headers";
 
 export default function Header() {
+    const isSignedIn = cookies().get('Authorization')
+
   return (
     <header className="w-full d-flex center header">
     <div className="container w-max">
@@ -12,11 +15,11 @@ export default function Header() {
             <nav className="nav">
                 <Link href="/" className="menu-link">Overview</Link>
                 <Link href="/" className="menu-link">Features</Link>
-                <Link href="/portfolio/courses" className="menu-link">Courses</Link>
-                {/* @if(signedIn)
-                {
-                    <a className="menu-link" asp-action="Index" asp-controller="Course">Courses</a>
-                } */}
+                {isSignedIn ?
+                (<Link href="/portfolio/courses" className="menu-link">Courses</Link>)
+                :
+                (<></>)
+                }
                 <Link href="/" className="menu-link">Contact</Link>
             </nav>
 
@@ -29,35 +32,27 @@ export default function Header() {
                 </label>
                 <div className="">Dark</div>
             </div>
-
-            <div className="account-buttons">
-              <Link href="/auth/signin" className="btn-gray">
-                  <i className="fa-solid fa-arrow-right-to-bracket"></i>
-                  <span>Sign in</span>
-              </Link>
-              <Link href="/auth/signup" className="btn-theme">
-                  <i className="fa-regular fa-user"></i>
-                  <span>Sign up</span>
-              </Link>
-                
-                {/* @if (signedIn)
-                {
-                    <a className="header-profile" asp-action="Details" asp-controller="User">
-                        <img src="~/img/uploads/profiles/@(user!.ProfileImg)" alt="@user.FirstName @user.LastName" />
-                    </a>
-                }
-                else
-                {
-                    <a className="btn-gray" asp-controller="Auth" asp-action="Signin">
+                {isSignedIn ?
+                (
+                    <Link href="/account/details" className="header-profile">
+                        <img src="/img/avatars/kalle.png" alt="Kalle Anka" />
+                    </Link>
+                )   
+                :
+                (
+                    <div className="account-buttons">
+                    <Link href="/auth/signin" className="btn-gray">
                         <i className="fa-solid fa-arrow-right-to-bracket"></i>
                         <span>Sign in</span>
-                    </a>
-                    <a className="btn-theme" asp-controller="Auth" asp-action="Signup">
+                    </Link>
+                    <Link href="/auth/signup" className="btn-theme">
                         <i className="fa-regular fa-user"></i>
                         <span>Sign up</span>
-                    </a>
-                } */}
-            </div>
+                    </Link>
+                    </div>
+                ) 
+                }
+           
         </div>
 
         {/* !! CLIENT SIDE COMPONENT */}

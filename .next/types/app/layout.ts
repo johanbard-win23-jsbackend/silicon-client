@@ -1,4 +1,4 @@
-// File: C:\Users\bardj\Documents\GitHub\ecu-jsbackend-silicone\silicon-client\app\layout.tsx
+// File: C:\Users\jnbd05\Documents\Barden-GitHub\jsbackend\silicon-client\app\layout.tsx
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
