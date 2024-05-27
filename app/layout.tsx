@@ -3,6 +3,7 @@ import "./css/reset.css";
 import "./css/globals.css";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
+import { GlobalProvider } from "./context/GlobalContext";
 
 export const metadata: Metadata = {
   title: "Silicon",
@@ -21,11 +22,10 @@ export default function RootLayout({
         <script defer src="https://kit.fontawesome.com/41c8b474e2.js" crossOrigin="anonymous"></script>
       </head>
       <body className="body-wrapper">
-        <Header />
+          <Header />
         {children}
         <Footer />
       </body>
-      
     </html>
   );
 }

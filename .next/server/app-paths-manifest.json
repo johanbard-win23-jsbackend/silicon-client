@@ -1,7 +1,5 @@
 {
-  "/auth/signin/page": "app/auth/signin/page.js",
-  "/auth/signup/page": "app/auth/signup/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
   "/account/details/page": "app/account/details/page.js",
-  "/account/messages/page": "app/account/messages/page.js",
-  "/page": "app/page.js"
+  "/favicon.ico/route": "app/favicon.ico/route.js"
 }

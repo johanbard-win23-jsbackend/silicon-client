@@ -1,11 +1,23 @@
 import Link from "next/link";
 import styles from "./page.module.css";
 
-export default function AccountAside() {
+export type ProfileModel = {
+    name: string,
+    email: string,
+    profileImg: string
+}
+
+export interface ProfileProps {
+    profile: ProfileModel
+}
+
+export default function AccountAside(props: ProfileProps) {
+    const profile = props.profile
+    
   return (
     <aside className="accountaside">
         <div className="avatar-box">
-            <img className="avatar-img" src="/img/avatars/kalle.png" alt="" />
+            <img className="avatar-img" src={"/img/avatars/" + profile.profileImg} alt="" />
             <div className="change-avatar">
                 <i className="fa-solid fa-arrows-rotate"></i>
             </div>
@@ -13,8 +25,8 @@ export default function AccountAside() {
         <div className="short-info-box">
             {/* <p className="h5">@($"{Model.ProfileInfo!.FirstName} {Model.ProfileInfo.LastName}")</p>
             <p className="text-m">@($"{Model.ProfileInfo.Email}")</p> */}
-            <p className="h5">Kalle Anka</p>
-            <p className="text-m">kalle.anka@example.com</p>
+            <p className="h5">{profile.name}</p>
+            <p className="text-m">{profile.email}</p>
         </div>
         <div className="buttons-box">
             <Link href="/account/details" className="btn btn-theme">

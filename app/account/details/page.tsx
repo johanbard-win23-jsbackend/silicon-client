@@ -1,22 +1,37 @@
 'use client'
-import AccountAside from "@/app/components/asides/Account";
+import AccountAside, { ProfileModel } from "@/app/components/asides/Account";
 import styles from "./page.module.css";
-import { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function Details() {
+    const router = useRouter()
+    const [error, setError] = useState<string>('')
+    const [userIdVar, setUserIdVar] = useState('')
     const token = useSearchParams().get('token')
     const [isLoading, setLoading] = useState(true)
     const [DetailsForm, setDetailsForm] = useState({
+        userId: userIdVar,
         firstName: '',
         lastName: '',
         email: '',
         phone: '',
-        bio: ''
+        bio: '',
       })
-   
+      const [AccountAsideData, setAccountAsideData] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        profileImg: ''
+      })
+
+      const profile: ProfileModel = {
+        name: AccountAsideData.firstName + ' ' + AccountAsideData.lastName,
+        email: AccountAsideData.email,
+        profileImg: AccountAsideData.profileImg
+      }
+
     useEffect(() => {
-        console.log("Token: " + token)
         fetch('https://jb-silicon-tokenprovider.azurewebsites.net/api/GetUserFromToken?code=8JsrEIvrhRXOPR5tGL7ZguZAl4I2RSuIOQvHNPwhe43WAzFuxlqSoA%3D%3D', {
             method: 'post',
             headers: {
@@ -25,8 +40,8 @@ export default function Details() {
         })
         .then((res) => res.json())
         .then((body) => {
-            let json = '{"userId":"' + body.userId + '"}'
-            console.log(json)
+            setUserIdVar(body.userId) 
+            //let json = '{"userId":"' + body.userId + '"}'
             fetch('https://jb-silicon-profileprovider.azurewebsites.net/api/GetProfile?code=F1agisL-rVQd_ldnt2LDHm5xWcnhGKf2mzc9DOO-FcdzAzFucUYB-g%3D%3D', {
                 method: 'post',
                 headers: {
@@ -37,10 +52,54 @@ export default function Details() {
             .then((res) => res.json())
             .then((data) => {
             setDetailsForm(data)
+            setAccountAsideData(data)
             setLoading(false)
             })
         })
     }, [])
+
+    const onChangeDetails = (e: ChangeEvent<HTMLInputElement>) => {
+        setDetailsForm(data => ({...data, [e.target.name]: e.target.value}))
+    }
+
+    const onChangeDetailsTextArea = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        setDetailsForm(data => ({...data, [e.target.name]: e.target.value}))
+    }
+    
+    const handleDetailsSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    try {
+        e.preventDefault()
+
+        setDetailsForm({...DetailsForm, userId: userIdVar})
+
+        // console.log("WHAT IS THIS " + userIdVar)
+        // console.log("WHAT IS THAT " + DetailsForm.userId)
+
+        const res = await fetch('https://jb-silicon-profileprovider.azurewebsites.net/api/UpdateProfile?code=qbRvpE9Ut5dmxlae6FqXy40YKQXdl23dvhdLX3FggnJwAzFuq-PWbw%3D%3D', {
+        method: 'post',
+        mode: "no-cors",
+        headers: {
+            'content-type': 'application/json',
+        },
+        body: JSON.stringify(DetailsForm)
+        })
+
+        //console.log(res)
+
+        if(res.status === 200 || res.status === 0) {
+            console.log("Success")
+        }
+        else {
+        setError("Server Error")
+        console.error("Server Error")
+        }
+    }
+    catch {
+        setError("Client Error")
+        console.error("Client Error")
+    }
+}
+
    
     if (isLoading) return (
         <main className={`w-full d-flex column center ${styles.main}`}>
@@ -63,40 +122,40 @@ export default function Details() {
     <main className={`w-full d-flex column center ${styles.main}`}>
       <section className="account-details w-max">
         <div className="container">
-          <AccountAside />
+          <AccountAside profile={profile} />
           <div className="details">
             <h1>Account details</h1>
-            <form method="post" id="basic-info" noValidate>
+            <form onSubmit={handleDetailsSubmit} id="basic-info" noValidate>
                 <fieldset>
                   <legend><h2 className="h5">Basic info</h2></legend>
                   <div className="box">
                       <div id="details-firstname" className="input-box">
                           <label className="label">First name</label>
                           <span></span>
-                          <input type="text" value={DetailsForm.firstName} placeholder="Enter your first name" />
+                          <input type="text" name='firstName' value={DetailsForm.firstName} onChange={onChangeDetails} placeholder="Enter your first name" />
                       </div>
 
                       <div id="details-lastname" className="input-box">
                           <label className="label">Last name</label>
                           <span></span>
-                          <input type="text" value={DetailsForm.lastName} placeholder="Enter your last name"/>
+                          <input type="text" name='lastName' value={DetailsForm.lastName} onChange={onChangeDetails} placeholder="Enter your last name"/>
                       </div>
 
                       <div id="details-email" className="input-box">
                           <label className="label">Email address</label>
                           <span></span>
-                          <input type="text" value={DetailsForm.email} placeholder="Enter your email address"/>
+                          <input type="text" name='email' value={DetailsForm.email} placeholder="Enter your email address" disabled/>
                       </div>
 
                       <div id="details-phone" className="input-box">
                           <label className="label">Phone <span className="optional">(optional)</span></label>
-                          <input type="text" value={DetailsForm.phone} placeholder="Enter your phone"/>
+                          <input type="text" name='phone' value={DetailsForm.phone} onChange={onChangeDetails} placeholder="Enter your phone"/>
                       </div>
                   </div>
 
                   <div id="details-bio" className="input-box">
                       <label className="label">Bio <span className="optional">(optional)</span></label>
-                      <textarea rows={4} value={DetailsForm.bio} placeholder="Add short bio"></textarea>
+                      <textarea rows={4} name='bio' value={DetailsForm.bio} onChange={onChangeDetailsTextArea} placeholder="Add short bio"></textarea>
                   </div>
 
                   <div className="buttons-box">

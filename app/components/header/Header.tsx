@@ -1,10 +1,12 @@
 import Link from "next/link";
 import styles from "./page.module.css";
 import { cookies } from "next/headers";
+import { useState } from "react";
 
+// !!! CLIENT-SERVER CONFLICT
 export default function Header() {
     const isSignedIn = cookies().get('Authorization')
-
+    const profileImg = 'avatar.png' // !!! TEMP
 
     // const menuButtonClicked = (e: React.MouseEvent<HTMLElement>) => {
 
@@ -40,7 +42,7 @@ export default function Header() {
                 {isSignedIn ?
                 (
                     <Link href="/account/details" className="header-profile">
-                        <img src="/img/avatars/kalle.png" alt="Kalle Anka" />
+                        <img src={"/img/avatars/" + profileImg} alt="Profile image" />
                     </Link>
                 )   
                 :
