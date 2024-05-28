@@ -3,12 +3,14 @@ import AccountAside, { ProfileModel } from "@/app/components/asides/Account";
 import styles from "./page.module.css";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { getAuthToken } from "@/app/actions";
 
 export default function Details() {
     const router = useRouter()
     const [error, setError] = useState<string>('')
     const [userIdVar, setUserIdVar] = useState('')
-    const token = useSearchParams().get('token')
+    //const token = useSearchParams().get('token')
+    var token: string
     const [isLoading, setLoading] = useState(true)
     const [DetailsForm, setDetailsForm] = useState({
         userId: userIdVar,
@@ -19,6 +21,7 @@ export default function Details() {
         bio: '',
     })
     const [AddressForm, setAddressForm] = useState({
+        email: '',
         address1: '',
         address2: '',
         postalCode: '',
@@ -38,40 +41,53 @@ export default function Details() {
     }
 
     useEffect(() => {
-        fetch('https://jb-silicon-tokenprovider.azurewebsites.net/api/GetUserFromToken?code=8JsrEIvrhRXOPR5tGL7ZguZAl4I2RSuIOQvHNPwhe43WAzFuxlqSoA%3D%3D', {
-            method: 'post',
-            headers: {
-                "Authorization": `bearer ${token}`
-            }
-        })
-        .then((res) => res.json())
-        .then((body) => {
-            //setUserIdVar(body.userId)
-            let json = '{"userId":"' + body.userId + '"}';
-            console.log(json)
-            //fetch('https://jb-silicon-profileprovider.azurewebsites.net/api/GetProfile?code=F1agisL-rVQd_ldnt2LDHm5xWcnhGKf2mzc9DOO-FcdzAzFucUYB-g%3D%3D', {
-            fetch('http://localhost:7225/api/GetProfile', {
-                mode: 'no-cors',
-                method: 'post',
-                
-                headers: {
-                    'content-type': 'application/json'
-                },
-                //body: JSON.stringify(body)
-                body: json
+        doIt()
+
+        async function doIt() {
+            await getAuthToken()
+            .then( async (t) => {
+                if (t != null) {
+                    console.log(t)
+                    token = t;
+                    try {
+                        fetch('https://jb-silicon-tokenprovider.azurewebsites.net/api/GetUserFromToken?code=8JsrEIvrhRXOPR5tGL7ZguZAl4I2RSuIOQvHNPwhe43WAzFuxlqSoA%3D%3D', {
+                            method: 'post',
+                            headers: {
+                                "Authorization": `bearer ${token}`
+                            }
+                        })
+                        .then((res) => res.json())
+                        .then((body) => {
+                            //setUserIdVar(body.userId)
+                            let json = '{"userId":"' + body.userId + '"}';
+                            //console.log(json)
+                            fetch('https://jb-silicon-profileprovider.azurewebsites.net/api/GetProfile?code=F1agisL-rVQd_ldnt2LDHm5xWcnhGKf2mzc9DOO-FcdzAzFucUYB-g%3D%3D', {
+                                //mode: 'no-cors',
+                                method: 'post',
+                                headers: {
+                                    'content-type': 'application/json'
+                                },
+                                //body: JSON.stringify(body)
+                                body: json,
+                            })
+                            .then((res2) => res2.json())
+                            .then((data) => {
+                                setDetailsForm(data)
+                                setAddressForm(data)
+                                setAccountAsideData(data)
+                                setLoading(false)
+                            })
+                            .catch(error => console.error('Error:', error));
+                        })
+                        }
+                        catch {
+                            setError("Client Error")
+                            console.error("Client Error")
+                        }
+                }
             })
-            .then((res2) => {
-                console.log(res2);
-                let data = res2.json();
-                console.log(data);
-            })
-            //.then((data) => {
-                // setDetailsForm(data)
-                // setAddressForm(data)
-                // setAccountAsideData(data)
-            //setLoading(false)
-            //})
-        })
+        }
+
     }, [])
 
     const onChangeDetails = (e: ChangeEvent<HTMLInputElement>) => {
@@ -80,6 +96,10 @@ export default function Details() {
 
     const onChangeDetailsTextArea = (e: ChangeEvent<HTMLTextAreaElement>) => {
         setDetailsForm(data => ({...data, [e.target.name]: e.target.value}))
+    }
+
+    const onChangeAddress = (e: ChangeEvent<HTMLInputElement>) => {
+        setAddressForm(data => ({...data, [e.target.name]: e.target.value}))
     }
     
     const handleDetailsSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -91,9 +111,9 @@ export default function Details() {
         // console.log("WHAT IS THIS " + userIdVar)
         // console.log("WHAT IS THAT " + DetailsForm.userId)
 
-        const res = await fetch('https://jb-silicon-profileprovider.azurewebsites.net/api/UpdateProfile?code=qbRvpE9Ut5dmxlae6FqXy40YKQXdl23dvhdLX3FggnJwAzFuq-PWbw%3D%3D', {
+        const res = await fetch('https://jb-silicon-profileprovider.azurewebsites.net/api/UpdateDetails?code=CnI-lfmBylTFqb9gixJZ4-3CBE3e5Y9v5V-gRmFQMxKTAzFunIpJMg%3D%3D', {
         method: 'post',
-        mode: "no-cors",
+        //mode: "no-cors",
         headers: {
             'content-type': 'application/json',
         },
@@ -103,6 +123,35 @@ export default function Details() {
         //console.log(res)
 
         if(res.status === 200 || res.status === 0) {
+            console.log("Success")
+        }
+        else {
+        setError("Server Error")
+        console.error("Server Error")
+        }
+    }
+    catch {
+        setError("Client Error")
+        console.error("Client Error")
+    }
+}
+
+const handleAddressSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    try {
+        e.preventDefault()
+
+        setAddressForm({...AddressForm, email: DetailsForm.email})
+
+        const res = await fetch('https://jb-silicon-profileprovider.azurewebsites.net/api/UpdateAddress?code=OsicmWyO4-Q1f3eHfHybaSACjsN0dxBuxcqWPcjM3NraAzFu_VWojw%3D%3D', {
+        method: 'post',
+        //mode: "no-cors",
+        headers: {
+            'content-type': 'application/json',
+        },
+        body: JSON.stringify(AddressForm)
+        })
+
+        if(res.status === 200) {
             console.log("Success")
         }
         else {
@@ -181,29 +230,29 @@ export default function Details() {
               </fieldset>
           </form>
 
-          <form method="post" id="address" noValidate>
+          <form onSubmit={handleAddressSubmit} id="address" noValidate>
                 <fieldset>
                     <legend><h2 className="h5">Address</h2></legend>
                     
                     <div id="details-address1" className="input-box">
                         <label className="label">Address line 1</label>
-                        <input type="text" />
+                        <input type="text" name='address1' value={AddressForm.address1} onChange={onChangeAddress} />
                     </div>
 
                     <div id="details-address2" className="input-box">
                         <label className="label">Address line 2</label>
-                        <input type="text" />
+                        <input type="text" name='address2' value={AddressForm.address2} onChange={onChangeAddress} />
                     </div>
 
                     <div className="box">
                         <div id="details-postalcode" className="input-box">
                             <label className="label">Postal code</label>
-                            <input type="text" />
+                            <input type="text" name='postalCode' value={AddressForm.postalCode} onChange={onChangeAddress} />
                         </div>
 
                         <div id="city" className="input-box">
                             <label className="label">City</label>
-                            <input type="text" />
+                            <input type="text" name='city' value={AddressForm.city} onChange={onChangeAddress} />
                         </div>
                     </div>
 

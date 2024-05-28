@@ -12,6 +12,24 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
+    "/account/security/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/account/security/page.css",
+      "static/chunks/app/account/security/page.js"
+    ],
+    "/account/notifications/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/account/notifications/page.css",
+      "static/chunks/app/account/notifications/page.js"
+    ],
+    "/account/messages/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/account/messages/page.css",
+      "static/chunks/app/account/messages/page.js"
+    ],
     "/_not-found/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",

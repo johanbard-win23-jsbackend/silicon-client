@@ -1,5 +1,9 @@
+'use client'
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import styles from "./page.module.css";
+import { getAuthToken, getUserId, getUserProfile } from "@/app/actions"
+import { useEffect, useState } from "react";
 
 export type ProfileModel = {
     name: string,
@@ -13,42 +17,90 @@ export interface ProfileProps {
 
 export default function AccountAside(props: ProfileProps) {
     const profile = props.profile
+    const pathname = usePathname()
+    //const [token, setToken] = useState('')
+    var token: string
+    var userIdString: string
+    const [profileInfo, setProfileInfo] = useState({
+        userId: '',
+        profileImg: '',
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        bio: '',
+    })
+
+    useEffect(() => {
+        async function getData() {
+            await getAuthToken()
+            .then( async (t) => {
+                if (t != null) {
+                    console.log(t)
+                    token = t;
+                }
+            })
+
+            await getUserId()
+            .then(async (uid) => {
+                console.log(uid)
+            })
+
+            await getUserProfile()
+            .then(async (profile) => {
+                console.log(profile)
+                setProfileInfo(profile)
+            })
+            
+        }
+            
     
+                
+            
+            // let profileRes = await getProfileInfo()
+            // console.log(profileRes)
+            // if (profileRes != null)
+            //     setProfileInfo(profileRes)
+            
+        getData()
+    }, [])
+    
+
   return (
     <aside className="accountaside">
         <div className="avatar-box">
-            <img className="avatar-img" src={"/img/avatars/" + profile.profileImg} alt="" />
+            <img className="avatar-img" src={"/img/avatars/" + profileInfo.profileImg} alt="" />
             <div className="change-avatar">
                 <i className="fa-solid fa-arrows-rotate"></i>
             </div>
         </div>
         <div className="short-info-box">
-            {/* <p className="h5">@($"{Model.ProfileInfo!.FirstName} {Model.ProfileInfo.LastName}")</p>
-            <p className="text-m">@($"{Model.ProfileInfo.Email}")</p> */}
-            <p className="h5">{profile.name}</p>
-            <p className="text-m">{profile.email}</p>
+            {/* <p className="h5">{profile.name}</p>
+            <p className="text-m">{profile.email}</p> */}
+            <p className="h5">{profileInfo.firstName + ' ' + profileInfo.lastName}</p>
+            <p className="text-m">{profileInfo.email}</p>
         </div>
         <div className="buttons-box">
-            <Link href="/account/details" className="btn btn-theme">
+            <Link href={"/account/details"} className={`btn ${pathname === '/account/details' ? 'btn-theme' : 'btn-white'}`}>
                 <i className="fa-regular fa-cog"></i>
                 <p>Account Details</p>
             </Link>
-            <Link href="/account/security" className="btn btn-white">
+            <Link href="/account/security" className={`btn ${pathname === '/account/security' ? 'btn-theme' : 'btn-white'}`}>
                 <i className="fa-regular fa-lock"></i>
                 <p>Security</p>
             </Link>
-            <Link href="/account/notifications" className="btn btn-white">
+            <Link href="/account/notifications" className={`btn ${pathname === '/account/notifications' ? 'btn-theme' : 'btn-white'}`}>
                 <i className="fa-regular fa-bell"></i>
                 <p>Notifications</p>
             </Link>
-            <Link href="/account/messages" className="btn btn-white">
+            {/* <Link href="/account/messages" className={`btn ${pathname === '/account/messages' ? 'btn-theme' : 'btn-white'}`}>
                 <i className="fa-regular fa-messages"></i>
                 <p>Messages</p>
             </Link>
-            <Link href="/account/saveditems" className="btn btn-white">
+            <Link href="/account/saveditems" className={`btn ${pathname === '/account/saveditems' ? 'btn-theme' : 'btn-white'}`}>
                 <i className="fa-regular fa-bookmark"></i>
                 <p>Saved Items</p>
-            </Link>
+            </Link> */}
             <Link href="/account/details" className="btn btn-white">
                 <i className="fa-regular fa-arrow-left-from-bracket"></i>
                 <p>Sign Out</p>

@@ -334,6 +334,7 @@ a:hover {
 }
 
 .btn-theme {
+  width: -moz-fit-content;
   width: fit-content;
   border-radius: 6px;
   text-align: center;
@@ -356,6 +357,7 @@ a:hover {
 }
 
 .btn-theme-s {
+  width: -moz-fit-content;
   width: fit-content;
   border-radius: 6px;
   text-align: center;
@@ -381,6 +383,7 @@ a:hover {
 }
 
 .btn-gray {
+  width: -moz-fit-content;
   width: fit-content;
   border-radius: 6px;
   text-align: center;
@@ -550,8 +553,14 @@ form input[type=text], form input[type=email], form input[type=tel], form input[
   color: var(--gray-700);
   padding: 0.5rem;
 }
+form input[type=text]::-moz-placeholder, form input[type=email]::-moz-placeholder, form input[type=tel]::-moz-placeholder, form input[type=password]::-moz-placeholder {
+  opacity: 0.4;
+}
 form input[type=text]::placeholder, form input[type=email]::placeholder, form input[type=tel]::placeholder, form input[type=password]::placeholder {
   opacity: 0.4;
+}
+form input[type=text]:active::-moz-placeholder, form input[type=text]:focus-visible::-moz-placeholder, form input[type=text]:focus-within::-moz-placeholder, form input[type=text]:focus::-moz-placeholder, form input[type=email]:active::-moz-placeholder, form input[type=email]:focus-visible::-moz-placeholder, form input[type=email]:focus-within::-moz-placeholder, form input[type=email]:focus::-moz-placeholder, form input[type=tel]:active::-moz-placeholder, form input[type=tel]:focus-visible::-moz-placeholder, form input[type=tel]:focus-within::-moz-placeholder, form input[type=tel]:focus::-moz-placeholder, form input[type=password]:active::-moz-placeholder, form input[type=password]:focus-visible::-moz-placeholder, form input[type=password]:focus-within::-moz-placeholder, form input[type=password]:focus::-moz-placeholder {
+  color: var(--white);
 }
 form input[type=text]:active::placeholder, form input[type=text]:focus-visible::placeholder, form input[type=text]:focus-within::placeholder, form input[type=text]:focus::placeholder, form input[type=email]:active::placeholder, form input[type=email]:focus-visible::placeholder, form input[type=email]:focus-within::placeholder, form input[type=email]:focus::placeholder, form input[type=tel]:active::placeholder, form input[type=tel]:focus-visible::placeholder, form input[type=tel]:focus-within::placeholder, form input[type=tel]:focus::placeholder, form input[type=password]:active::placeholder, form input[type=password]:focus-visible::placeholder, form input[type=password]:focus-within::placeholder, form input[type=password]:focus::placeholder {
   color: var(--white);
@@ -570,8 +579,14 @@ form textarea {
   color: var(--gray-700);
   padding: 0.5rem;
 }
+form textarea::-moz-placeholder {
+  opacity: 0.4;
+}
 form textarea::placeholder {
   opacity: 0.4;
+}
+form textarea:active::-moz-placeholder, form textarea:focus-visible::-moz-placeholder, form textarea:focus-within::-moz-placeholder, form textarea:focus::-moz-placeholder {
+  color: var(--white);
 }
 form textarea:active::placeholder, form textarea:focus-visible::placeholder, form textarea:focus-within::placeholder, form textarea:focus::placeholder {
   color: var(--white);
@@ -806,11 +821,13 @@ aside.accountaside .buttons-box {
 }
 aside.accountaside .buttons-box .btn {
   width: 100%;
+  justify-content: flex-start;
 }
 aside.accountaside .buttons-box .btn i {
   min-width: 2rem;
 }
 aside.accountaside .buttons-box .btn-white {
+  width: -moz-fit-content;
   width: fit-content;
   border-radius: 6px;
   text-align: center;
@@ -938,6 +955,7 @@ section.account-security .container .details .buttons-box {
   margin-top: 0.5rem;
 }
 section.account-security .container .details .buttons-box .btn-red {
+  width: -moz-fit-content;
   width: fit-content;
   border-radius: 6px;
   text-align: center;
@@ -1143,7 +1161,8 @@ section.courses .grid-box .grid-item .content img {
   border-radius: 8px 8px 0 0;
   max-height: 300px;
   width: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 section.courses .grid-box .grid-item .content .text-box {
   flex: 1 1 auto;

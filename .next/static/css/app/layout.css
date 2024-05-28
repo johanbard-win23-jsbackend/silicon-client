@@ -815,6 +815,7 @@ aside.accountaside .buttons-box {
 }
 aside.accountaside .buttons-box .btn {
   width: 100%;
+  justify-content: flex-start;
 }
 aside.accountaside .buttons-box .btn i {
   min-width: 2rem;
