@@ -41,7 +41,7 @@ export default function Header() {
             </div>
                 {isSignedIn ?
                 (
-                    <Link href="/account/details" className="header-profile">
+                    <Link href={"/account/details?token=" + isSignedIn.value} className="header-profile">
                         <img src={"/img/avatars/" + profileImg} alt="Profile image" />
                     </Link>
                 )   

@@ -17,44 +17,60 @@ export default function Details() {
         email: '',
         phone: '',
         bio: '',
-      })
-      const [AccountAsideData, setAccountAsideData] = useState({
+    })
+    const [AddressForm, setAddressForm] = useState({
+        address1: '',
+        address2: '',
+        postalCode: '',
+        city: ''
+    })
+    const [AccountAsideData, setAccountAsideData] = useState({
         firstName: '',
         lastName: '',
         email: '',
         profileImg: ''
-      })
+    })
 
-      const profile: ProfileModel = {
+    const profile: ProfileModel = {
         name: AccountAsideData.firstName + ' ' + AccountAsideData.lastName,
         email: AccountAsideData.email,
         profileImg: AccountAsideData.profileImg
-      }
+    }
 
     useEffect(() => {
         fetch('https://jb-silicon-tokenprovider.azurewebsites.net/api/GetUserFromToken?code=8JsrEIvrhRXOPR5tGL7ZguZAl4I2RSuIOQvHNPwhe43WAzFuxlqSoA%3D%3D', {
             method: 'post',
             headers: {
-                "Authorization": `bearer ${token}`,
+                "Authorization": `bearer ${token}`
             }
         })
         .then((res) => res.json())
         .then((body) => {
-            setUserIdVar(body.userId) 
-            //let json = '{"userId":"' + body.userId + '"}'
-            fetch('https://jb-silicon-profileprovider.azurewebsites.net/api/GetProfile?code=F1agisL-rVQd_ldnt2LDHm5xWcnhGKf2mzc9DOO-FcdzAzFucUYB-g%3D%3D', {
+            //setUserIdVar(body.userId)
+            let json = '{"userId":"' + body.userId + '"}';
+            console.log(json)
+            //fetch('https://jb-silicon-profileprovider.azurewebsites.net/api/GetProfile?code=F1agisL-rVQd_ldnt2LDHm5xWcnhGKf2mzc9DOO-FcdzAzFucUYB-g%3D%3D', {
+            fetch('http://localhost:7225/api/GetProfile', {
+                mode: 'no-cors',
                 method: 'post',
+                
                 headers: {
-                    'content-type': 'application/json',
+                    'content-type': 'application/json'
                 },
-                body: JSON.stringify(body)
+                //body: JSON.stringify(body)
+                body: json
             })
-            .then((res) => res.json())
-            .then((data) => {
-            setDetailsForm(data)
-            setAccountAsideData(data)
-            setLoading(false)
+            .then((res2) => {
+                console.log(res2);
+                let data = res2.json();
+                console.log(data);
             })
+            //.then((data) => {
+                // setDetailsForm(data)
+                // setAddressForm(data)
+                // setAccountAsideData(data)
+            //setLoading(false)
+            //})
         })
     }, [])
 
