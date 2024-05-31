@@ -8,12 +8,12 @@ import { getAuthToken } from "@/app/actions";
 export default function Details() {
     const router = useRouter()
     const [error, setError] = useState<string>('')
-    //const [userIdVar, setUserIdVar] = useState('')
+    const [userIdVar, setUserIdVar] = useState('')
     //const token = useSearchParams().get('token')
     var token: string
     const [isLoading, setLoading] = useState(true)
     const [DetailsForm, setDetailsForm] = useState({
-        userId: '',
+        userId: userIdVar,
         firstName: '',
         lastName: '',
         email: '',
