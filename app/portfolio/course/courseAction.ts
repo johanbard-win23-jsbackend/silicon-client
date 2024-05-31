@@ -4,7 +4,7 @@ import { cookies } from "next/headers";
 
 export async function getCourse(id: string | undefined): Promise<any> {
     const query = '{"query": "{getCourseById (id: \\"' + id + '\\") {id title category isBestseller smallImageUri authors {name} prices{ currencySymbol price discountPrice} description hours likes likesInPercent}}" }'
-    const res = await fetch('http://localhost:7020/api/graphql', {
+    const res = await fetch('https://jb-silicon-courseprovider.azurewebsites.net/api/graphql?code=rxqSW2fwHV5NU7uRbDiF4Tl609bezu0s8_NJCjRZdLDVAzFuHqvx2A%3D%3D', {
         method: 'post',
         headers: {
             'content-type': 'application/json'

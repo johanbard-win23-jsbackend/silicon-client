@@ -32,9 +32,9 @@ export default function Course() {
 
   useEffect(() => {
     async function getData() {
-        console.log(id)
-        let test = await getQuery(id)
-        console.log(test)
+        // console.log(id)
+        // let test = await getQuery(id)
+        // console.log(test)
         await getCourse(id)
         .then(async (c) => {
             setCourse(c)
