@@ -31,7 +31,7 @@ export async function getUserId(): Promise<string> {
     let token = await getAuthToken()
     let userId: string = ''
     
-    await fetch('http://localhost:7144/api/GetUserFromToken', {
+    await fetch('https://jb-silicon-tokenprovider.azurewebsites.net/api/GetUserFromToken?code=8JsrEIvrhRXOPR5tGL7ZguZAl4I2RSuIOQvHNPwhe43WAzFuxlqSoA%3D%3D', {
         method: 'post',
         headers: {
             "Authorization": `bearer ${token}`

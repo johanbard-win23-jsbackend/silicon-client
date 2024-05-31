@@ -1228,4 +1228,77 @@ section.courses .grid-box .grid-item .bookmark:hover {
 }
 section.courses .grid-box .grid-item .bookmark:hover i {
   color: var(--white);
+}
+
+section.course .container {
+  gap: 3rem;
+}
+section.course .heading-box {
+  position: relative;
+}
+section.course .heading-box .heading-info {
+  padding: 1.5rem;
+  z-index: 99;
+}
+section.course .heading-box .heading-info .tags {
+  display: flex;
+  gap: 0.5rem;
+}
+section.course .heading-box .heading-info .tags .bestseller {
+  color: var(--white);
+  background-color: #22C55E;
+  padding: 0.125rem 0.5rem;
+  border-radius: 8px;
+}
+section.course .heading-box .heading-info .tags .category {
+  color: #000000;
+  background-color: #E2E5F1;
+  padding: 0.125rem 0.5rem;
+  border-radius: 8px;
+}
+section.course .heading-box .heading-info .title {
+  color: var(--white);
+}
+section.course .heading-box .heading-info .info-box .price-box .price {
+  flex: 0 1 auto;
+  color: #FFFFFF;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+section.course .heading-box .heading-info .info-box .price-box .price.sale-new {
+  color: #FFFFFF;
+}
+section.course .heading-box .heading-info .info-box .price-box .price.sale-old {
+  color: #B4B7C9;
+  font-weight: 500;
+  text-decoration: line-through;
+}
+section.course .heading-box .heading-info .info-box .details-box {
+  margin: 1rem 0;
+}
+section.course .heading-box .heading-info .info-box .details-box .hours, section.course .heading-box .heading-info .info-box .details-box .rating {
+  color: var(--white);
+}
+section.course .heading-box .heading-info .author-box {
+  margin-top: 3rem;
+  color: var(--white);
+}
+section.course .heading-box .heading-info .author-box .h6 {
+  color: var(--white);
+}
+section.course .heading-box img.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  filter: brightness(50%);
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+section.course .content-box {
+  padding: 1.5rem;
+}
+section.course .content-box .content {
+  margin-top: 1rem;
 }/*# sourceMappingURL=globals.css.map */

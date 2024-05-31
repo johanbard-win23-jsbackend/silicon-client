@@ -15,8 +15,9 @@ export interface ProfileProps {
     profile: ProfileModel
 }
 
-export default function AccountAside(props: ProfileProps) {
-    const profile = props.profile
+//export default function AccountAside(props: ProfileProps) {
+export default function AccountAside() {
+    //const profile = props.profile
     const pathname = usePathname()
     //const [token, setToken] = useState('')
     var token: string
@@ -48,15 +49,11 @@ export default function AccountAside(props: ProfileProps) {
 
             await getUserProfile()
             .then(async (profile) => {
-                console.log(profile)
+                //console.log(profile)
                 setProfileInfo(profile)
             })
             
         }
-            
-    
-                
-            
             // let profileRes = await getProfileInfo()
             // console.log(profileRes)
             // if (profileRes != null)
@@ -101,7 +98,7 @@ export default function AccountAside(props: ProfileProps) {
                 <i className="fa-regular fa-bookmark"></i>
                 <p>Saved Items</p>
             </Link> */}
-            <Link href="/account/details" className="btn btn-white">
+            <Link href="/auth/signout" className="btn btn-white">
                 <i className="fa-regular fa-arrow-left-from-bracket"></i>
                 <p>Sign Out</p>
             </Link>

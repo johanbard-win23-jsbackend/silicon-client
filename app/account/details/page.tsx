@@ -8,12 +8,12 @@ import { getAuthToken } from "@/app/actions";
 export default function Details() {
     const router = useRouter()
     const [error, setError] = useState<string>('')
-    const [userIdVar, setUserIdVar] = useState('')
+    //const [userIdVar, setUserIdVar] = useState('')
     //const token = useSearchParams().get('token')
     var token: string
     const [isLoading, setLoading] = useState(true)
     const [DetailsForm, setDetailsForm] = useState({
-        userId: userIdVar,
+        userId: '',
         firstName: '',
         lastName: '',
         email: '',
@@ -27,18 +27,18 @@ export default function Details() {
         postalCode: '',
         city: ''
     })
-    const [AccountAsideData, setAccountAsideData] = useState({
-        firstName: '',
-        lastName: '',
-        email: '',
-        profileImg: ''
-    })
+    // const [AccountAsideData, setAccountAsideData] = useState({
+    //     firstName: '',
+    //     lastName: '',
+    //     email: '',
+    //     profileImg: ''
+    // })
 
-    const profile: ProfileModel = {
-        name: AccountAsideData.firstName + ' ' + AccountAsideData.lastName,
-        email: AccountAsideData.email,
-        profileImg: AccountAsideData.profileImg
-    }
+    // const profile: ProfileModel = {
+    //     name: AccountAsideData.firstName + ' ' + AccountAsideData.lastName,
+    //     email: AccountAsideData.email,
+    //     profileImg: AccountAsideData.profileImg
+    // }
 
     useEffect(() => {
         doIt()
@@ -74,7 +74,7 @@ export default function Details() {
                             .then((data) => {
                                 setDetailsForm(data)
                                 setAddressForm(data)
-                                setAccountAsideData(data)
+                                //setAccountAsideData(data)
                                 setLoading(false)
                             })
                             .catch(error => console.error('Error:', error));
@@ -187,7 +187,8 @@ const handleAddressSubmit = async (e: FormEvent<HTMLFormElement>) => {
     <main className={`w-full d-flex column center ${styles.main}`}>
       <section className="account-details w-max">
         <div className="container">
-          <AccountAside profile={profile} />
+          {/* <AccountAside profile={profile} /> */}
+          <AccountAside />
           <div className="details">
             <h1>Account details</h1>
             <form onSubmit={handleDetailsSubmit} id="basic-info" noValidate>

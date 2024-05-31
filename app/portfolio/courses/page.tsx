@@ -1,7 +1,56 @@
+'use client'
 import Link from "next/link";
 import styles from "./page.module.css";
+import { useEffect, useState } from "react";
+import { getCourses } from "./coursesAction";
 
 export default function Courses() {
+    interface ICourse {
+        id: String,
+        title: string,
+        category: string,
+        smallImageUri: string,
+        isBestseller: boolean,
+        hours: string,
+        likes: string,
+        likesInPercent: string,
+        prices: {
+            currencySymbol: string,
+            price: string,
+            discountPrice: String
+        },
+        authors: [
+            { name: String}
+        ]
+    }
+    const [isLoading, setIsLoading] = useState(true)
+    const [courses, setCourses] = useState<Array<ICourse>>([])
+
+    useEffect(() => {
+        async function getData() {
+            await getCourses()
+            .then(async (c) => {
+                console.log(c)
+                //setCourses(courses => [...courses, c])
+                setCourses(c)
+                setIsLoading(false)
+            })
+        }
+        getData()
+    }, [])
+
+    if(isLoading) {
+        return (
+            <main className={`w-full d-flex column center ${styles.main}`}>
+                <section className="courses w-full d-flex center">
+                    <div className="container d-flex center">
+                        <p>Loading...</p>
+                    </div>
+                </section>
+            </main>
+        )
+    }
+
   return (
     <main className={`w-full d-flex column center ${styles.main}`}>
       <section className="courses w-full d-flex center">
@@ -26,59 +75,30 @@ export default function Courses() {
             </div>
         </div>
         <div className="grid-box">
-          <div className="grid-item">
-              <Link href="/portfolio/course?!!ID" className="content">
-                <img src="/img/avatars/kalle.png" alt="Image for !!COURSE" />
-                <div className="text-box">
-                    <p className="h5">!!TITLE</p>
-                    <p className="text-s">By !!AUTHOR</p>
-                    <p className="text-l price">!!PRICE</p>
-                    <div className="info-box">
-                        <p className="text-s hours">!!HOURS hours</p>
-                        <p className="text-s rating">!!PERCENT% (!!TOTAL-K)</p>
-                    </div>
-                </div>
-              </Link>
-              <div className="text-s tag">Best Seller</div>
-              <button className="bookmark">
-                  <i className="fa-regular fa-bookmark"></i>
-              </button>
-          </div>
-            
-            {/* @if (Model.Courses != null)
-            {
-                foreach (var course in Model.Courses)
-                {
-                    <div className="grid-item">
-                        <a asp-action="Index" asp-controller="Course" asp-route-id="@course.Id" className="content">
-                            <img src="~/img/courses/@course.ImageUrl" alt="Image for @course.Title">
-                            <div className="text-box">
-                                <p className="h5">@course.Title</p>
-                                <p className="text-s">By @course.Author</p>
-                                @if (course.DiscountPrice >= 0)
-                                {
-                                    <p><span className="text-l price sale-new">$@Math.Round(course.DiscountPrice, 2)</span> <span className="text-l price sale-old">$@Math.Round(course.Price, 2)</span></p>
-                                }
-                                else
-                                {
-                                    <p className="text-l price">$@Math.Round(course.Price, 2)</p>
-                                }
-                                <div className="info-box">
-                                    <p className="text-s hours">@course.Hours hours</p>
-                                    <p className="text-s rating">@course.LikesInPercent()% (@course.TotalBuysInK()K)</p>
-                                </div>
-                            </div>
-                        </a>
-                        @if (course.BestSeller)
-                        {
-                            <div className="text-s tag">Best Seller</div>
-                        }
-                        <button className="bookmark">
-                            <i className="fa-regular fa-bookmark"></i>
-                        </button>
-                    </div>
-                }
-            } */}
+            {courses.map((course) => {
+                return (
+                <div className="grid-item">
+                <Link href={`/portfolio/course?id=${course.id}`} className="content">
+                  <img src={course.smallImageUri} alt={`Image for ${course.title}`} />
+                  <div className="text-box">
+                      <p className="h5">{course.title}</p>
+                      <p className="text-s">{`By ${course.authors.map(x => x.name).join(' & ')}`}</p>
+                      { course.prices.discountPrice === null ? 
+                        <p className="text-l price">{`${course.prices.currencySymbol} ${course.prices.price}`}</p> : 
+                        <p><span className="text-l price sale-new">{`${course.prices.currencySymbol} ${course.prices.discountPrice}`}</span> <span className="text-l price sale-old">{`${course.prices.currencySymbol} ${course.prices.price}`}</span></p> 
+                      }
+                      <div className="info-box">
+                          <p className="text-s hours">{`${course.hours} hours`}</p>
+                          <p className="text-s rating">{`${course.likesInPercent} (${course.likes})`}</p>
+                      </div>
+                  </div>
+                </Link>
+                { course.isBestseller && <div className="text-s tag">Best Seller</div> } 
+                <button className="bookmark">
+                    <i className="fa-regular fa-bookmark"></i>
+                </button>
+                </div>)
+            })}
         </div>
         <div className="pagination-box">
 

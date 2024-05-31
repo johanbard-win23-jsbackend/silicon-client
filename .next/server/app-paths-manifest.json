@@ -1,7 +1,8 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
   "/account/details/page": "app/account/details/page.js",
+  "/portfolio/courses/page": "app/portfolio/courses/page.js",
+  "/portfolio/course/page": "app/portfolio/course/page.js",
   "/account/security/page": "app/account/security/page.js",
-  "/account/notifications/page": "app/account/notifications/page.js",
-  "/account/messages/page": "app/account/messages/page.js"
+  "/account/notifications/page": "app/account/notifications/page.js"
 }
