@@ -77,7 +77,7 @@ export default function Courses() {
         <div className="grid-box">
             {courses.map((course) => {
                 return (
-                <div className="grid-item">
+                <div className="grid-item" key={`${course.id}`}>
                 <Link href={`/portfolio/course?id=${course.id}`} className="content">
                   <img src={course.smallImageUri} alt={`Image for ${course.title}`} />
                   <div className="text-box">
