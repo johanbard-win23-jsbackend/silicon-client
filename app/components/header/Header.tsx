@@ -2,6 +2,7 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import { cookies } from "next/headers";
 import { useState } from "react";
+import Image from "next/image";
 
 // !!! CLIENT-SERVER CONFLICT
 export default function Header() {
@@ -16,7 +17,7 @@ export default function Header() {
     <header className="w-full d-flex center header">
     <div className="container w-max">
         <Link href="/" id="logo">
-            <img src="" alt="Silicon Logo" />
+            <Image src="" alt="Silicon Logo" />
         </Link>
         <div id="menu">
             <nav className="nav">

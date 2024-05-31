@@ -3,6 +3,7 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import { useEffect, useState } from "react";
 import { getCourses } from "./coursesAction";
+import Image from "next/image";
 
 export default function Courses() {
     interface ICourse {
@@ -79,7 +80,7 @@ export default function Courses() {
                 return (
                 <div className="grid-item" key={`${course.id}`}>
                 <Link href={`/portfolio/course?id=${course.id}`} className="content">
-                  <img src={course.smallImageUri} alt={`Image for ${course.title}`} />
+                  <Image src={course.smallImageUri} alt={`Image for ${course.title}`} />
                   <div className="text-box">
                       <p className="h5">{course.title}</p>
                       <p className="text-s">{`By ${course.authors.map(x => x.name).join(' & ')}`}</p>

@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import styles from "./page.module.css";
 import { getAuthToken, getUserId, getUserProfile } from "@/app/actions"
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export type ProfileModel = {
     name: string,
@@ -66,7 +67,7 @@ export default function AccountAside() {
   return (
     <aside className="accountaside">
         <div className="avatar-box">
-            <img className="avatar-img" src={"/img/avatars/" + profileInfo.profileImg} alt="" />
+            <Image className="avatar-img" src={"/img/avatars/" + profileInfo.profileImg} alt="" />
             <div className="change-avatar">
                 <i className="fa-solid fa-arrows-rotate"></i>
             </div>
