@@ -76,7 +76,7 @@ if(course === undefined) {
         <div className="container w-full d-flex column center">
           {/* <div className="heading-box w-max d-flex column center" style={{backgroundImage: `url(${course.smallImageUri})`}}> */}
           <div className="heading-box w-max d-flex column center">
-            <Image src={course.smallImageUri} alt="" className="bg" />
+            <Image src={course.smallImageUri} fill={true} alt="" className="bg" />
             <div className="heading-info w-max">
               <div className="tags">
                 { course.isBestseller && <div className="text-s bestseller">Best Seller</div> }

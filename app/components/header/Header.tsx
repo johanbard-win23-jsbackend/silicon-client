@@ -17,7 +17,7 @@ export default function Header() {
     <header className="w-full d-flex center header">
     <div className="container w-max">
         <Link href="/" id="logo">
-            <Image src="" alt="Silicon Logo" />
+            <img src="" alt="Silicon Logo" />
         </Link>
         <div id="menu">
             <nav className="nav">

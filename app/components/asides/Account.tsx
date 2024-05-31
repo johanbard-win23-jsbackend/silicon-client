@@ -67,7 +67,7 @@ export default function AccountAside() {
   return (
     <aside className="accountaside">
         <div className="avatar-box">
-            <Image className="avatar-img" src={"/img/avatars/" + profileInfo.profileImg} alt="" />
+            <Image className="avatar-img" src={"/img/avatars/" + profileInfo.profileImg} fill={true} alt="" />
             <div className="change-avatar">
                 <i className="fa-solid fa-arrows-rotate"></i>
             </div>

@@ -80,7 +80,7 @@ export default function Courses() {
                 return (
                 <div className="grid-item" key={`${course.id}`}>
                 <Link href={`/portfolio/course?id=${course.id}`} className="content">
-                  <Image src={course.smallImageUri} alt={`Image for ${course.title}`} />
+                  <img src={course.smallImageUri} alt={`Image for ${course.title}`} />
                   <div className="text-box">
                       <p className="h5">{course.title}</p>
                       <p className="text-s">{`By ${course.authors.map(x => x.name).join(' & ')}`}</p>
