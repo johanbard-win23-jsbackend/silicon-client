@@ -2,43 +2,29 @@
   "node": {
     "21e81ab65a42d3716f4dc4e7db29c471b17be668": {
       "workers": {
-        "app/account/notifications/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Cbardj%5C%5CDocuments%5C%5CGitHub%5C%5Cecu-jsbackend-silicone%5C%5Csilicon-client%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22getUserId%22%2C%22getUserProfile%22%2C%22getAuthToken%22%5D%5D%2C%5B%22C%3A%5C%5CUsers%5C%5Cbardj%5C%5CDocuments%5C%5CGitHub%5C%5Cecu-jsbackend-silicone%5C%5Csilicon-client%5C%5Capp%5C%5Caccount%5C%5Cnotifications%5C%5CnotificationsActions.ts%22%2C%5B%22getUserSubscription%22%5D%5D%5D&__client_imported__=true!",
-        "app/account/details/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Cbardj%5C%5CDocuments%5C%5CGitHub%5C%5Cecu-jsbackend-silicone%5C%5Csilicon-client%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22getUserId%22%2C%22getUserProfile%22%2C%22getAuthToken%22%5D%5D%5D&__client_imported__=true!"
+        "app/account/security/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Cbardj%5C%5CDocuments%5C%5CGitHub%5C%5Cecu-jsbackend-silicone%5C%5Csilicon-client%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22getUserId%22%2C%22getUserProfile%22%2C%22getAuthToken%22%5D%5D%5D&__client_imported__=true!"
       },
       "layer": {
-        "app/account/notifications/page": "action-browser",
-        "app/account/details/page": "action-browser"
+        "app/account/security/page": "action-browser"
       }
     },
     "4e362e43dff8e524368d1a1613c2b9250fc2996c": {
       "workers": {
-        "app/account/notifications/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Cbardj%5C%5CDocuments%5C%5CGitHub%5C%5Cecu-jsbackend-silicone%5C%5Csilicon-client%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22getUserId%22%2C%22getUserProfile%22%2C%22getAuthToken%22%5D%5D%2C%5B%22C%3A%5C%5CUsers%5C%5Cbardj%5C%5CDocuments%5C%5CGitHub%5C%5Cecu-jsbackend-silicone%5C%5Csilicon-client%5C%5Capp%5C%5Caccount%5C%5Cnotifications%5C%5CnotificationsActions.ts%22%2C%5B%22getUserSubscription%22%5D%5D%5D&__client_imported__=true!",
-        "app/account/details/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Cbardj%5C%5CDocuments%5C%5CGitHub%5C%5Cecu-jsbackend-silicone%5C%5Csilicon-client%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22getUserId%22%2C%22getUserProfile%22%2C%22getAuthToken%22%5D%5D%5D&__client_imported__=true!"
+        "app/account/security/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Cbardj%5C%5CDocuments%5C%5CGitHub%5C%5Cecu-jsbackend-silicone%5C%5Csilicon-client%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22getUserId%22%2C%22getUserProfile%22%2C%22getAuthToken%22%5D%5D%5D&__client_imported__=true!"
       },
       "layer": {
-        "app/account/notifications/page": "action-browser",
-        "app/account/details/page": "action-browser"
+        "app/account/security/page": "action-browser"
       }
     },
     "d99845cae1f6221b5e7c913ff6e550dd539f4a58": {
       "workers": {
-        "app/account/notifications/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Cbardj%5C%5CDocuments%5C%5CGitHub%5C%5Cecu-jsbackend-silicone%5C%5Csilicon-client%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22getUserId%22%2C%22getUserProfile%22%2C%22getAuthToken%22%5D%5D%2C%5B%22C%3A%5C%5CUsers%5C%5Cbardj%5C%5CDocuments%5C%5CGitHub%5C%5Cecu-jsbackend-silicone%5C%5Csilicon-client%5C%5Capp%5C%5Caccount%5C%5Cnotifications%5C%5CnotificationsActions.ts%22%2C%5B%22getUserSubscription%22%5D%5D%5D&__client_imported__=true!",
-        "app/account/details/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Cbardj%5C%5CDocuments%5C%5CGitHub%5C%5Cecu-jsbackend-silicone%5C%5Csilicon-client%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22getUserId%22%2C%22getUserProfile%22%2C%22getAuthToken%22%5D%5D%5D&__client_imported__=true!"
+        "app/account/security/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Cbardj%5C%5CDocuments%5C%5CGitHub%5C%5Cecu-jsbackend-silicone%5C%5Csilicon-client%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22getUserId%22%2C%22getUserProfile%22%2C%22getAuthToken%22%5D%5D%5D&__client_imported__=true!"
       },
       "layer": {
-        "app/account/notifications/page": "action-browser",
-        "app/account/details/page": "action-browser"
-      }
-    },
-    "ef07bf254b6eaf275130c77d0ae2bbad25e8a71e": {
-      "workers": {
-        "app/account/notifications/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Cbardj%5C%5CDocuments%5C%5CGitHub%5C%5Cecu-jsbackend-silicone%5C%5Csilicon-client%5C%5Capp%5C%5Cactions.ts%22%2C%5B%22getUserId%22%2C%22getUserProfile%22%2C%22getAuthToken%22%5D%5D%2C%5B%22C%3A%5C%5CUsers%5C%5Cbardj%5C%5CDocuments%5C%5CGitHub%5C%5Cecu-jsbackend-silicone%5C%5Csilicon-client%5C%5Capp%5C%5Caccount%5C%5Cnotifications%5C%5CnotificationsActions.ts%22%2C%5B%22getUserSubscription%22%5D%5D%5D&__client_imported__=true!"
-      },
-      "layer": {
-        "app/account/notifications/page": "action-browser"
+        "app/account/security/page": "action-browser"
       }
     }
   },
   "edge": {},
-  "encryptionKey": "30xDq1LBDvsesjDKNMUHnafJcOaN+spvCvqWopGKR+E="
+  "encryptionKey": "d6HCABf3fimj8dgLTg/fYN3RyMixnHsZuqOoRb/swiA="
 }

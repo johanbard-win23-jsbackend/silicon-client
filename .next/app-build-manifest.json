@@ -1,22 +1,16 @@
 {
   "pages": {
-    "/account/notifications/page": [
+    "/account/security/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/account/notifications/page.css",
-      "static/chunks/app/account/notifications/page.js"
+      "static/css/app/account/security/page.css",
+      "static/chunks/app/account/security/page.js"
     ],
     "/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
-    ],
-    "/account/details/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/account/details/page.css",
-      "static/chunks/app/account/details/page.js"
     ],
     "/_not-found/page": [
       "static/chunks/webpack.js",
