@@ -12,9 +12,9 @@ export type ProfileModel = {
     profileImg: string
 }
 
-export interface ProfileProps {
-    profile: ProfileModel
-}
+// export interface ProfileProps {
+//     profile: ProfileModel
+// }
 
 //export default function AccountAside(props: ProfileProps) {
 export default function AccountAside() {
@@ -38,14 +38,14 @@ export default function AccountAside() {
             await getAuthToken()
             .then( async (t) => {
                 if (t != null) {
-                    console.log(t)
+                    //console.log(t)
                     token = t;
                 }
             })
 
             await getUserId()
             .then(async (uid) => {
-                console.log(uid)
+                //console.log(uid)
             })
 
             await getUserProfile()
