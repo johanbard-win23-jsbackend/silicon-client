@@ -3,6 +3,7 @@ import AccountAside from "@/app/components/asides/Account";
 import styles from "./page.module.css";
 import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
 import { getUserId } from "@/app/actions";
+import { useRouter } from "next/navigation";
 
 export type UpdatePasswordRequest = {
   id: string,
@@ -16,6 +17,7 @@ export type DeleteUserRequest = {
 }
 
 export default function Security() {
+  const router = useRouter();
   const [error, setError] = useState('')
   const [updatePasswordData, setUpdatePasswordData] = useState({
     id: '',
@@ -107,6 +109,7 @@ const handleDeleteUserSubmit = async (e: FormEvent<HTMLFormElement>) => {
 
       if(res.status === 200) {
           console.log("Success :: " + res.status + " :: " + res.statusText)
+          router.push('/auth/signout')
       }
       else {
         setError("Server Error")
