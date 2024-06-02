@@ -108,6 +108,7 @@ const handleDeleteUserSubmit = async (e: FormEvent<HTMLFormElement>) => {
       })
 
       console.log(res)
+      
 
       if(res.status == 200) {
           console.log("Success :: " + res.status + " :: " + res.statusText)
