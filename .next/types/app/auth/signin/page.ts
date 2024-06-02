@@ -1,8 +1,8 @@
-// File: C:\Users\bardj\Documents\GitHub\ecu-jsbackend-silicone\silicon-client\app\account\security\page.tsx
-import * as entry from '../../../../../app/account/security/page.js'
+// File: C:\Users\bardj\Documents\GitHub\ecu-jsbackend-silicone\silicon-client\app\auth\signin\page.tsx
+import * as entry from '../../../../../app/auth/signin/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
-type TEntry = typeof import('../../../../../app/account/security/page.js')
+type TEntry = typeof import('../../../../../app/auth/signin/page.js')
 
 // Check that the entry is a valid entry
 checkFields<Diff<{
