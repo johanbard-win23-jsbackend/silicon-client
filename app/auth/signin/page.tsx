@@ -7,18 +7,30 @@ import { useFormState } from "react-dom";
 import signInActions from "./signInAction";
 
 export default function SignIn() {
+  const [isLoading, setIsLoading] = useState(false)
   const [signInForm, setSignInForm] = useFormState(signInActions, {success: false, error: undefined, token: undefined })
   const router = useRouter()
   const [error, setError] = useState<string>()
 
   useEffect(() => {
+    setIsLoading(true)
     if(signInForm.success) {
       router.push('/account/details?token=' + signInForm.token)
     }
     else {
+      setIsLoading(false)
       setError(signInForm.error)
     }
   }, [signInForm])
+
+  if (isLoading) return (
+    <main className={`w-full d-flex column center ${styles.main}`}>
+        <section className="w-max">
+            <div className="container d-flex center">
+                <p>Loading...</p>
+            </div>
+        </section>
+    </main>)
 
   return (
     <main className={`w-full d-flex column center ${styles.main}`}>
@@ -39,7 +51,7 @@ export default function SignIn() {
                 <div id="signin-password" className="input-box">
                     <label>Password</label>
                     <span></span>
-                    <input type="text" name="password" placeholder="Enter your password" />
+                    <input type="password" name="password" placeholder="Enter your password" />
                 </div>
 
                 <div id="signin-remember" className="checkbox-box">

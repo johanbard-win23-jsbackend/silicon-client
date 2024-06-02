@@ -94,10 +94,10 @@ const handleDeleteUserSubmit = async (e: FormEvent<HTMLFormElement>) => {
     
     if(deleteUserData.confirmDelete) {
       let userId = await getUserId()
-      //setUpdatePasswordData({ ...updatePasswordData, id: userId })
+      
       let json = '{"id":"' + userId + '"}';
 
-      //console.log(json)
+      console.log(json)
 
       const res = await fetch('https://jb-silicon-accountprovider.azurewebsites.net/api/Delete?code=fNN3los8noPe5d6yzSu5rw_3UI4esF9cqiAeD-zpi62hAzFuDhVNdg%3D%3D', {
       method: 'post',
@@ -107,7 +107,9 @@ const handleDeleteUserSubmit = async (e: FormEvent<HTMLFormElement>) => {
       body: json
       })
 
-      if(res.status === 200) {
+      console.log(res)
+
+      if(res.status == 200) {
           console.log("Success :: " + res.status + " :: " + res.statusText)
           router.push('/auth/signout')
       }

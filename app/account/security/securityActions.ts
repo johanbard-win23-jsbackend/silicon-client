@@ -17,7 +17,7 @@ export async function updatePassword(upReq: UpdatePasswordRequest) {
 
     let json = '{"id":"' + userId + '", "oldPassword":"' + upReq.oldPassword + '", "newPassword":"' + upReq.newPassword + '", "confirmPassword":"' + upReq.confirmPassword + '"}';
 
-    await fetch('http://localhost:7295/api/UpdatePassword', {
+    await fetch('https://jb-silicon-accountprovider.azurewebsites.net/api/UpdatePassword?code=HBqo25mv7BmKoELeTHRBOfoW-dbl7zmErln6L_QQFY_AAzFuyRfrsg%3D%3D', {
         method: 'post',
         headers: {
             'content-type': 'application/json'

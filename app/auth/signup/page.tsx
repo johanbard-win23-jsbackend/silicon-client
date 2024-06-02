@@ -36,7 +36,9 @@ export default function SignUp() {
       
       let result = await res.json()
 
-      if(res.status == 200) {
+      console.log(result)
+
+      if(res.status === 200) {
         if(result.StatusCode === 200)
           router.push("/auth/signin")
         else if(result.StatusCode === 409) {

@@ -25,6 +25,7 @@ export default function SignOut() {
       else {
         setIsSuccess(true)  
         router.push('/')
+        router.refresh()
       }
     }
 
