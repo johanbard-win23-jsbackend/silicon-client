@@ -11,4 +11,4 @@
   - [silicon-tokenProvider](https://github.com/johanbard-win23-jsbackend/silicon-tokenProvider)
   - [silicon-db-creator](https://github.com/johanbard-win23-jsbackend/silicon-db-creator)
 
-Att deploya NextJS-klient till Azure har varit knepigt. Jag har testat att bygga egna github workflows efter instruktioner på nätet, när det funkade och jag testade sidan fick jag ":( Application Error" utan ytterligare beskrivning. Till slut testade jag och genom att använda App Service Build Service. SUCCESS!!!
+Att deploya NextJS-klient till Azure har varit knepigt. Jag har testat att bygga egna github workflows efter instruktioner på nätet, när det funkade och jag testade sidan fick jag ":( Application Error" utan ytterligare beskrivning. Till slut testade jag att använda App Service Build Service. SUCCESS!!!
