@@ -1,6 +1,6 @@
 ﻿# NextJS
 - Delvis TypeScript
-- Server- and client-side rendering (exempel silicon-client/app/account/notifications/)
+- Server- and client-side (exempel silicon-client/app/account/notifications/)
 - Cookies för Auth och Tokens
 - Hanterar EntityFrameworkCore.Identity utan stöd
 - Använder:
